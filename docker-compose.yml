@@ -27,6 +27,7 @@ services:
 
   mooc_mysql:
     container_name: codelytv-php_ddd_skeleton-mooc-mysql
+    platform: linux/x86_64
     image: mysql:8.0
     ports:
       - 3360:3306
@@ -34,11 +35,11 @@ services:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     healthcheck:
-      test: ["CMD", "mysqladmin", "--user=root", "--password=", "--host=127.0.0.1", "ping", "--silent"]
+      test: [ "CMD", "mysqladmin", "--user=root", "--password=", "--host=127.0.0.1", "ping", "--silent" ]
       interval: 2s
       timeout: 10s
       retries: 10
-    command: ["--default-authentication-plugin=mysql_native_password"]
+    command: [ "--default-authentication-plugin=mysql_native_password" ]
 
   backoffice_elasticsearch:
     container_name: codelytv-php_ddd_skeleton-backoffice-elastic
